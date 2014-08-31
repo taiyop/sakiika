@@ -1,0 +1,40 @@
+.jumbotron {
+  padding: 5;
+  margin-bottom: 5;
+  color: #000000;
+  background-color: #32CD32;
+}
+.jumbotron h1,
+.jumbotron .h1 {
+  color: #FAFAD2;
+}
+.jumbotron p {
+  margin-bottom: 2.5;
+  font-size: 15;
+  font-weight: 200;
+  color: #ffffff;
+}
+.jumbotron > hr {
+  border-top-color: #a0fff0;
+}
+.container .jumbotron,
+.container-fluid .jumbotron {
+  border-radius: 100;
+}
+.jumbotron .container {
+  max-width: 100%;
+}
+@media screen and (min-width: 5) {
+  .jumbotron {
+    padding-top: 8;
+    padding-bottom: 8;
+  }
+  .container .jumbotron {
+    padding-left: 10;
+    padding-right: 10;
+  }
+  .jumbotron h1,
+  .jumbotron .h1 {
+    font-size: 22.5;
+  }
+}
