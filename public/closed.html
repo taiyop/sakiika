@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Closed</title>
-    <style>
+  <style>
     div#map_canvas{
       width: 800px;
       height: 500px;
@@ -14,16 +14,7 @@
     #map_canvas label{width: auto; display:inline; }
   </style>
   <script src="http://maps.google.com/maps/api/js?sensor=true&language=ja"></script>
-    <!--
-    <style>
-    body { font-family: Helvetica, Arial, sans-serif; }
-    div { width: 800px; height: 400px; margin: 40px auto; padding: 20px; border: 2px solid #5298fc; }
-    h1 { font-size: 30px; margin: 0; }
-    p { margin: 40px 0; }
-    em { font-family: monospace; }
-    a { color: #5298fc; text-decoration: none; }
-    </style>
-  -->
+  <script src="./parse.min.js"></script>
   <style>
   body {
     padding-top: 60px;
@@ -58,15 +49,29 @@
     </div>
   </div>
 
+  <div class="container">
   <div id="map_canvas" class="container"></div>
+    <br><br>
+  <div class="row">
+    <div class="col-md-9" style="text-align:right;">
+      <p class="transmit">右のボタンを押して、通行止め地点を送信→</p>
+      <p class="transmit">Put the right button to transmit the danger spots.→</p>
+    </div>
+    <div class="col-md-3">
+      <button type="button" class="btn btn-primary btn-lg" onClick="startPostClosurePoint()" id="post-closure-point">送信<br>Transmit</button>
+    </div>
+  </div>
+  </div>
   <br><br>
 
   <div class="panel-footer">
     <p>Quick Escape</p>
     <div style="text-align:right;">
-      <small><a href="http://civichack-osaka-2014.peatix.com/" target="_blank">2014 Civic Hack OSAKA</a>　　team.SAKIIKA</small>
+      <p>team.Sakiika</p>
+      <a class="footer" href="http://civichack-osaka-2014.peatix.com/" target="_blank">2014 Civic Hack OSAKA</a>
     </div>
   </div>
+
 
   <script>
         var mapOptions = {
@@ -77,6 +82,7 @@
         var map = new google.maps.Map(document.getElementById("map_canvas"),
             mapOptions);
   </script>
+  <script src="./parse_object.js"></script>
   <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
   <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.js"></script>

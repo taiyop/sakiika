@@ -27,3 +27,6 @@ p {
 	color: #FAFAD2;
 	font-size: 20px;
 }
+p.transmit {
+	color: #32CD32;
+}
