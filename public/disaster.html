@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Disaster</title>
+    <!--
+    <style>
+    body { font-family: Helvetica, Arial, sans-serif; }
+    div { width: 800px; height: 400px; margin: 40px auto; padding: 20px; border: 2px solid #5298fc; }
+    h1 { font-size: 30px; margin: 0; }
+    p { margin: 40px 0; }
+    em { font-family: monospace; }
+    a { color: #5298fc; text-decoration: none; }
+    </style>
+    -->
+    <!-- Bootstrap -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.css">
+  </head>
+  <body>
+    <header>
+      <ul class="nav nav-tabs" role="tablist">
+        <li class="active"><a href="index.html">Home</a></li>
+        <li><a href="closed.html">Closed</a></li>
+        <li><a href="sos.html">SOS</a></li>
+      </ul>
+    </header>
+
+    <div class="jumbotron">
+    <div class="container">
+      <h1>Hello Saki-ika!Congratulations! You're already hosting with Parse.</h1>
+      <p>To get started, edit this file at <em>public/index.html</em> and start adding static content.</p>
+      <p>If you want something a bit more dynamic, delete this file and check out <a href="https://parse.com/docs/hosting_guide#webapp">our hosting docs</a>.</p>
+    </div>
+    </div>
+    <script>
+      var map;
+      function initialize() {
+          var mapOptions = {
+                zoom: 8,
+                          center: new google.maps.LatLng(-34.397, 150.644)
+                              };
+            map = new google.maps.Map(document.getElementById('map-canvas'),
+                      mapOptions);
+      }
+
+      google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.js"></script>
+  </body>
+</html>

@@ -4,16 +4,17 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>My ParseApp site</title>
-  <style>
-    div#map_canvas{
-      width: 800px;
-      height: 500px;
-    }
-    #map_canvas img{max-width: none !important;}
-    #map_canvas label{width: auto; display:inline; }
-  </style>
-  <script src="http://maps.google.com/maps/api/js?sensor=true&language=ja"></script>
+  <title>Closed</title>
+    <!--
+    <style>
+    body { font-family: Helvetica, Arial, sans-serif; }
+    div { width: 800px; height: 400px; margin: 40px auto; padding: 20px; border: 2px solid #5298fc; }
+    h1 { font-size: 30px; margin: 0; }
+    p { margin: 40px 0; }
+    em { font-family: monospace; }
+    a { color: #5298fc; text-decoration: none; }
+    </style>
+  -->
   <style>
   body {
     padding-top: 60px;
@@ -26,7 +27,6 @@
   <link href="../css/extend.css" rel="stylesheet">
 </head>
 <body>
-  <div id="map_canvas"></div>
   <div class="navber navbar-fixed-top">
     <div class="navbar-inner">
       <div class="container">
@@ -40,14 +40,25 @@
       </div>
     </div>
   </div>
+
+  <div class="jumbotron">
+    <div class="container">
+      <h1>通行止め情報</h1>
+      <p>Closed</p>
+    </div>
+  </div>
   <script>
-        var mapOptions = {
-          center: new google.maps.LatLng(34.693738, 135.502165),
-          zoom: 15,
-          mapTypeId: google.maps.MapTypeId.ROADMAP
-        };
-        var map = new google.maps.Map(document.getElementById("map_canvas"),
-            mapOptions);
+  var map;
+  function initialize() {
+    var mapOptions = {
+      zoom: 8,
+      center: new google.maps.LatLng(-34.397, 150.644)
+    };
+    map = new google.maps.Map(document.getElementById('map-canvas'),
+      mapOptions);
+  }
+
+  google.maps.event.addDomListener(window, 'load', initialize);
   </script>
   <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
   <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
