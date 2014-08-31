@@ -19,25 +19,23 @@ var uncomfortables = new UncomfortableCollection();
 uncomfortables.fetch({
   success: function(collection) {
     collection.each(function(object) {
-      var location = object.get("location");
-      setMaker(location.latitude, location.longitude);
-
-      console.warn(object);
+      setMaker(object);
     });
   },
   error: function(collection, error) {
     // The collection could not be retrieved.
   }
 });
-function setMaker(a, b){
-  var myLatlng = new google.maps.LatLng(a,b);
+function setMaker(object){
+  var location = object.get("location");
+  var myLatlng = new google.maps.LatLng(location.latitude, location.longitude);
   var image = 'green.png';
   var marker = new google.maps.Marker({
       position: myLatlng,
       map: map,
       icon: image,
       animation: google.maps.Animation.DROP,
-      title:"Hello World!"
+      title: object.get("time")
   });
 }
 
@@ -93,7 +91,7 @@ function mylistener(event) {
 
 function setRedMaker(a, b){
   var myLatlng = new google.maps.LatLng(a,b);
-  var image = 'red.png';
+  var image = 'stopPoint.png';
   var marker = new google.maps.Marker({
       position: myLatlng,
       map: map,
@@ -139,7 +137,7 @@ function setImgMaker(object){
   });
   var myInfoWindow = new google.maps.InfoWindow({
         // 吹き出しに出す文
-      content: "<img src='"+image.url()+"' width=75 height75><a href='"+image.url()+"' target='_blank'></a></img>",
+      content: "<a href='"+image.url()+"' target='_blank'><img src='"+image.url()+"' width=75 height75></img></a>",
   });
   google.maps.event.addListenerOnce(marker, "click", function(event) {
     myInfoWindow.open(map, marker);
@@ -171,7 +169,7 @@ rescue_signals.fetch({
 });
 function setPurpleMaker(a, b){
   var myLatlng = new google.maps.LatLng(a,b);
-  var image = 'purple.png';
+  var image = 'sos2.png';
   var marker = new google.maps.Marker({
       position: myLatlng,
       map: map,
