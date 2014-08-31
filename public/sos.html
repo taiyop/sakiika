@@ -5,6 +5,15 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>SOS</title>
+    <style>
+    div#map_canvas{
+      width: 800px;
+      height: 500px;
+    }
+    #map_canvas img{max-width: none !important;}
+    #map_canvas label{width: auto; display:inline; }
+  </style>
+  <script src="http://maps.google.com/maps/api/js?sensor=true&language=ja"></script>
     <!--
     <style>
     body { font-family: Helvetica, Arial, sans-serif; }
@@ -25,16 +34,17 @@
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.css">
   <link href="../css/font-awesome.min.css" rel="stylesheet">
   <link href="../css/extend.css" rel="stylesheet">
+  <link href="../css/jumbotron.css" rel="stylesheet">
 </head>
 <body>
   <div class="navber navbar-fixed-top">
-    <div class="navbar-inner">
+    <div class="navbar-inner navbar-inverse">
       <div class="container">
         <header>
           <ul class="nav nav-tabs nav-justified" role="tablist">
-            <li class="active"><a href="index.html"><i class="fa fa-home"></i>Home</a></li>
-            <li><a href="closed.html"><i class="fa fa-car"></i>Closed</a></li>
-            <li><a href="sos.html"><i class="fa fa-exclamation-triangle"></i>SOS</a></li>
+            <li class="navbar-brand"><a href="index.html"><i class="fa fa-home"></i> Home</a></li>
+            <li class="navbar-brand"><a href="closed.html"><i class="fa fa-car"></i> Closed</a></li>
+            <li class="active navbar-brand"><a href="sos.html"><i class="fa fa-exclamation-triangle"></i> SOS</a></li>
           </ul>
         </header>
       </div>
@@ -47,18 +57,25 @@
       <p>SOS</p>
     </div>
   </div>
-  <script>
-  var map;
-  function initialize() {
-    var mapOptions = {
-      zoom: 8,
-      center: new google.maps.LatLng(-34.397, 150.644)
-    };
-    map = new google.maps.Map(document.getElementById('map-canvas'),
-      mapOptions);
-  }
 
-  google.maps.event.addDomListener(window, 'load', initialize);
+  <div id="map_canvas" class="container"></div>
+  <br><br>
+
+  <div class="panel-footer">
+    <p>Quick Escape</p>
+    <div style="text-align:right;">
+      <small><a href="http://civichack-osaka-2014.peatix.com/" target="_blank">2014 Civic Hack OSAKA</a>　　team.SAKIIKA</small>
+    </div>
+  </div>
+  
+  <script>
+        var mapOptions = {
+          center: new google.maps.LatLng(34.693738, 135.502165),
+          zoom: 15,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        var map = new google.maps.Map(document.getElementById("map_canvas"),
+            mapOptions);
   </script>
   <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
   <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>

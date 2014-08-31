@@ -24,22 +24,40 @@
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.css">
   <link href="../css/font-awesome.min.css" rel="stylesheet">
   <link href="../css/extend.css" rel="stylesheet">
+  <link href="../css/jumbotron.css" rel="stylesheet">
 </head>
 <body>
-  <div id="map_canvas"></div>
   <div class="navber navbar-fixed-top">
-    <div class="navbar-inner">
+    <div class="navbar-inner navbar-inverse">
       <div class="container">
         <header>
           <ul class="nav nav-tabs nav-justified" role="tablist">
-            <li class="active"><a href="index.html"><i class="fa fa-home"></i>Home</a></li>
-            <li><a href="closed.html"><i class="fa fa-car"></i>Closed</a></li>
-            <li><a href="sos.html"><i class="fa fa-exclamation-triangle"></i>SOS</a></li>
+            <li class="active navbar-brand"><a href="index.html"><i class="fa fa-home"></i> Home</a></li>
+            <li class="navbar-brand"><a href="closed.html"><i class="fa fa-car"></i> Closed</a></li>
+            <li class="navbar-brand"><a href="sos.html"><i class="fa fa-exclamation-triangle"></i> SOS</a></li>
           </ul>
         </header>
       </div>
     </div>
   </div>
+
+  <div class="jumbotron">
+  <div class="container">
+    <h1>Quick Escape</h1>
+    <p>災害時の避難経路を共有するサービスです。</p>
+  </div>
+  </div>
+
+  <div id="map_canvas" class="container"></div>
+  <br><br>
+
+  <div class="panel-footer">
+    <p>Quick Escape</p>
+    <div style="text-align:right;">
+      <small><a href="http://civichack-osaka-2014.peatix.com/" target="_blank">2014 Civic Hack OSAKA</a>　　team.SAKIIKA</small>
+    </div>
+  </div>
+
   <script>
         var mapOptions = {
           center: new google.maps.LatLng(34.693738, 135.502165),
