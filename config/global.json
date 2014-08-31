@@ -1,0 +1,14 @@
+{
+    "applications": {
+        "Sakiika": {
+            "applicationId": "eyPDHAPXAjmDShgkSASmBE2bdcEoTbH7YEw6m5F8", 
+            "masterKey": "dOBcgaqUY78e2PhxRkepRE6UBMSpqDQuRnm5fQcG"
+        }, 
+        "_default": {
+            "link": "Sakiika"
+        }
+    }, 
+    "global": {
+        "parseVersion": "1.2.19"
+    }
+}
