@@ -63,13 +63,13 @@ closure_points.fetch({
   }
 });
 
-function postClosurePoint(){
+function postClosurePoint(latitude, longitude){
   var closure_point = new ClosurePoint();
-  var point = new Parse.GeoPoint({latitude: 40.0, longitude: -30.0});
+  var point = new Parse.GeoPoint({latitude: latitude, longitude: longitude});
   closure_point.set("location", point);
   closure_point.save(null, {
     success: function(closure_point) {
-      alert('New object created with objectId: ' + closure_point.id);
+      // alert('New object created with objectId: ' + closure_point.id);
       // var location = object.get("location");
       // setRedMaker(location.latitude, location.longitude);
       location.reload(true);
@@ -78,6 +78,17 @@ function postClosurePoint(){
       alert('Failed to create new object, with error code: ' + error.message);
     }
   });
+}
+function startPostClosurePoint(){
+  google.maps.event.addListener(map, 'click', mylistener);
+  alert('地図をクリックして、通行止め情報を送信してください。')
+}
+
+function mylistener(event) {
+  postClosurePoint(event.latLng.lat(), event.latLng.lng());
+  // document.getElementById("show_lat").innerHTML = event.latLng.lat();
+  // document.getElementById("show_lng").innerHTML = event.latLng.lng();
+  google.maps.event.remoteListener(map, 'click', mylistener);
 }
 
 function setRedMaker(a, b){
@@ -105,21 +116,36 @@ image_datas.fetch({
     collection.each(function(object) {
       console.log("=====image-data=====");
       console.warn(object);
-      var location = object.get("location");
-      setImgMaker(location.latitude, location.longitude);
+      setImgMaker(object);
     });
   },
   error: function(collection, error) {
     // The collection could not be retrieved.
   }
 });
-function setImgMaker(a, b){
+function setImgMaker(object){
+  var location = object.get("location");
+  var a = location.latitude;
+  var b = location.longitude;
+  var image = object.get("imageData");
+  // $("profileImg")[0].src = image.url();
+
   var myLatlng = new google.maps.LatLng(a,b);
   var marker = new google.maps.Marker({
       position: myLatlng,
       map: map,
       animation: google.maps.Animation.DROP,
       title:"Hello World!"
+  });
+  var myInfoWindow = new google.maps.InfoWindow({
+        // 吹き出しに出す文
+      content: "<img src='"+image.url()+"' width=75 height75><a href='"+image.url()+"' target='_blank'></a></img>",
+  });
+  google.maps.event.addListenerOnce(marker, "click", function(event) {
+    myInfoWindow.open(map, marker);
+  });
+
+  google.maps.event.addListener(myInfoWindow, "closeclick", function() {
   });
 }
 
