@@ -35,7 +35,7 @@ function setMaker(object){
       map: map,
       icon: image,
       animation: google.maps.Animation.DROP,
-      title: object.get("time")
+      title: "time"
   });
 }
 
@@ -50,9 +50,7 @@ var closure_points = new ClosurePointCollection();
 closure_points.fetch({
   success: function(collection) {
     collection.each(function(object) {
-      console.warn(object);
-      var location = object.get("location");
-      setRedMaker(location.latitude, location.longitude);
+      setRedMaker(object);
 
     });
   },
@@ -67,9 +65,6 @@ function postClosurePoint(latitude, longitude){
   closure_point.set("location", point);
   closure_point.save(null, {
     success: function(closure_point) {
-      // alert('New object created with objectId: ' + closure_point.id);
-      // var location = object.get("location");
-      // setRedMaker(location.latitude, location.longitude);
       location.reload(true);
     },
     error: function(closure_point, error) {
@@ -89,15 +84,16 @@ function mylistener(event) {
   google.maps.event.remoteListener(map, 'click', mylistener);
 }
 
-function setRedMaker(a, b){
-  var myLatlng = new google.maps.LatLng(a,b);
+function setRedMaker(object){
+  var location = object.get("location");
+  var myLatlng = new google.maps.LatLng(location.latitude, location.longitude);
   var image = 'stopPoint.png';
   var marker = new google.maps.Marker({
       position: myLatlng,
       map: map,
       icon: image,
       animation: google.maps.Animation.DROP,
-      title:"Hello World!"
+      title: "time"
   });
 }
 
@@ -144,38 +140,6 @@ function setImgMaker(object){
   });
 
   google.maps.event.addListener(myInfoWindow, "closeclick", function() {
-  });
-}
-//##########################################
-//####### RescueSignal ####################
-//##########################################
-var RescueSignal = Parse.Object.extend("RescueSignal");
-var RescueSignalCollection = Parse.Collection.extend({
-  model: RescueSignal
-});
-var rescue_signals = new RescueSignalCollection();
-rescue_signals.fetch({
-  success: function(collection) {
-    collection.each(function(object) {
-      var location = object.get("location");
-      setPurpleMaker(location.latitude, location.longitude);
-
-      console.warn(object);
-    });
-  },
-  error: function(collection, error) {
-    // The collection could not be retrieved.
-  }
-});
-function setPurpleMaker(a, b){
-  var myLatlng = new google.maps.LatLng(a,b);
-  var image = 'sos2.png';
-  var marker = new google.maps.Marker({
-      position: myLatlng,
-      map: map,
-      icon: image,
-      animation: google.maps.Animation.DROP,
-      title:"Hello World!"
   });
 }
 
